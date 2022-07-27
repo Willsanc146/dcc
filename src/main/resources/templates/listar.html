@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <header th:replace="layout/layout::header"></header>
+
+  <div class="py-4 ml-5 mr-5">
+    <div class="card bg-light">
+      <div class="card-header" th:text="${titulo}"></div>
+      <div class="card-body">
+        <h4 class="card-tittle">
+          <a th:href="@{/form}" class="btn btn-primary">Agregar voluntario</a>
+        </h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Numero</th>
+              <th>Tipo de documento</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Direccion</th>
+              <th>Sexo</th>
+              <th>Fecha Nacimiento</th>
+              <th>Estado Civil</th>
+              <th>Escolaridad</th>
+              <th>Antiguedad</th>
+              <th>Caso de Emergencia</th>
+              <th>Numero Emergencia</th>
+              <th>Detalles</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="Voluntario : ${Voluntarios}">
+              <td th:text="${Voluntario.id}"></td>
+              <td th:text="${Voluntario.documento}"></td>
+              <td th:text="${Voluntario.Nombre}"></td>
+              <td th:text="${Voluntario.apellido}"></td>
+              <td th:text="${Voluntario.email}"></td>
+              <td th:text="${Voluntario.telefono}"></td>
+              <td th:text="${Voluntario.direccion}"></td>
+              <td th:text="${Voluntario.sexo}"></td>
+              <td th:text="${Voluntario.fecha}"></td>
+              <td th:text="${Voluntario.estadoCivil}"></td>
+              <td th:text="${Voluntario.escolaridad}"></td>
+              <td th:text="${Voluntario.antiguedad}"></td>
+              <td th:text="${Voluntario.CasoEmergencia}"></td>
+              <td th:text="${Voluntario.numeroCasoEmergencia}"></td>
+              <td>
+                <a class="btn btn-info btn-sm" th:href="@{/ver/} + ${Voluntario.id}">Detalles</a>
+              </td>
+              <td>
+                <a class="btn btn-warning btn-sm" th:href="@{/form/} + ${Voluntario.id}">Editar</a>
+              </td>
+              <td>
+                <a class="btn btn-danger btn-sm" th:href="@{/eliminar/} + ${Voluntario.id}"
+                  onclick="return confirm('¿Estas seguro de eliminar al voluntario?');">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <nav th:replace="paginator-nav :: paginator"></nav>
+      </div>
+    </div>
+  </div>
+  <footer th:replace="layout/layout::footer"></footer>
+</body>
+
+</html>

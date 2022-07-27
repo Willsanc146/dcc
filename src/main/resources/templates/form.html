@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <header th:replace="layout/layout::header"></header>
+
+  <br />
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center" th:text="${titulo}"></h1>
+        <div class="card-body">
+          <form th:action="@{/form}" th:object="${Voluntario}" method="post">
+            <div class="form-group">
+              <label>Numero de Identificación: </label>
+              <input type="number" th:field="*{id}" th:value="${Voluntario?.id}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+            </div>
+            <div class="form-group">
+              <label>Tipo de Documento: </label>
+              <select class="form-control" th:field="*{documento}">
+                <option th:value="CC">Cédula de Ciudadania</option>
+                <option th:value="TI">Tarjeta de Identidad</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nombres: </label>
+              <input type="text" th:field="*{nombre}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+            </div>
+            <div class="form-group">
+              <label>Apellidos: </label>
+              <input type="text" th:field="*{apellido}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}"
+                th:errors="*{apellido}"></small>
+            </div>
+            <div class="form-group">
+              <label>Email: </label>
+              <input type="text" th:field="*{email}" class="form-control" th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+            </div>
+            <div class="form-group">
+              <label>Telefono: </label>
+              <input type="number" th:field="*{telefono}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}"
+                th:errors="*{telefono}"></small>
+            </div>
+            <div class="form-group">
+              <label>Dirección: </label>
+              <input type="text" th:field="*{direccion}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}"
+                th:errors="*{direccion}"></small>
+            </div>
+            <div class="form-group">
+              <label>Sexo: </label>
+              <select class="form-control" th:field="*{sexo}">
+                <option th:value="M">Masculino</option>
+                <option th:value="F">Femenino</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fecha de Cumpleaños: </label>
+              <input type="date" th:field="*{fecha}" class="form-control" th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+            </div>
+            <div class="form-group">
+              <label>Estado Civil: </label>
+              <input type="text" th:field="*{estadoCivil}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('estadoCivil')}"
+                th:errors="*{estadoCivil}"></small>
+            </div>
+            <div class="form-group">
+              <label>antigüedad: </label>
+              <input type="number" th:field="*{antiguedad}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('antiguedad')}"
+                th:errors="*{antiguedad}"></small>
+            </div>
+            <div class="form-group">
+              <label>Nombre de contacto en caso de emergencia: </label>
+              <input type="text" th:field="*{casoEmergencia}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('casoEmergencia')}"
+                th:errors="*{casoEmergencia}"></small>
+            </div>
+            <div class="form-group">
+              <label>Numero de contacto en caso de emergencia: </label>
+              <input type="number" th:field="*{numeroCasoEmergencia}" class="form-control"
+                th:errorclass="'form-control alert-danger'" />
+              <small class="form-text text-danger" th:if="${#fields.hasErrors('numeroCasoEmergencia')}"
+                th:errors="*{numeroCasoEmergencia}"></small>
+            </div>
+            <div class="box-footer">
+              <input type="submit" value="Guardar" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>
